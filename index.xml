@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Letscode</title>
+    <link>https://hschaeidt.github.io/blog/index.xml</link>
+    <description>Recent content on Letscode</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 16 Dec 2016 21:24:04 +0100</lastBuildDate>
+    <atom:link href="https://hschaeidt.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Jest &amp; Enzyme Snapshot Testing</title>
+      <link>https://hschaeidt.github.io/blog/post/jest-snapshot-testing/</link>
+      <pubDate>Fri, 16 Dec 2016 21:24:04 +0100</pubDate>
+      
+      <guid>https://hschaeidt.github.io/blog/post/jest-snapshot-testing/</guid>
+      <description>
+
+&lt;h1 id=&#34;enzyme-and-snapshots-in-harmony&#34;&gt;Enzyme and snapshots in harmony&lt;/h1&gt;
+
+&lt;p&gt;Lately I&amp;rsquo;ve been playing around with &lt;a href=&#34;https://facebook.github.io/jest/&#34;&gt;jests&lt;/a&gt; &lt;a href=&#34;https://facebook.github.io/jest/index.html#react-react-native-and-snapshot-testing&#34;&gt;Snapshot Testing&lt;/a&gt;
+after having manually set-up similar UI-tests with &lt;a href=&#34;http://airbnb.io/enzyme/&#34;&gt;enzyme&lt;/a&gt;. I must admit it&amp;rsquo;s quite comfortable to use.&lt;br /&gt;
+&lt;br /&gt;
+My approach was using the &lt;code&gt;react-test-renderer&lt;/code&gt; directly. Well, obviously this has some pitfalls when testing with enzyme
+and snapshots within the same testfile. A component can&amp;rsquo;t be mounted or shallowed twice, so &lt;a href=&#34;https://github.com/hschaeidt/react-timer-app/blob/d8d583de58474ba00325ce07bd1bf51de93fadf0/app/components/tracker/__tests__/TrackerItem-test.jsx&#34;&gt;my workaround&lt;/a&gt; was to create 2 different
+test setup helpers instead of one returning both: the tree and the wrapper.&lt;br /&gt;
+&lt;br /&gt;
+This will be a short story: The solution is simple, as &lt;a href=&#34;https://github.com/airbnb/enzyme/blob/master/src/react-compat.js#L30&#34;&gt;enzyme just uses the TestUtils renderer&lt;/a&gt;
+in the background  as I was using manually it&amp;rsquo;s quite obvious what to do.&lt;br /&gt;
+&lt;br /&gt;
+We can just go and call &lt;code&gt;getNodes()&lt;/code&gt; on our wrapper and it&amp;rsquo;s compatible with our &lt;code&gt;toMatchSnapshot()&lt;/code&gt; function. This &lt;a href=&#34;https://gist.github.com/hschaeidt/0534e948aa8e101f665e9a5d5931bf27&#34;&gt;gist&lt;/a&gt;
+shows a quick example of the idea.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
